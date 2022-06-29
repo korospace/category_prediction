@@ -1,0 +1,125 @@
+#akurasi{
+    width: 100%;
+    max-width: 900px;
+    height: max-content;
+    padding: 14px;
+    color: #155724;
+    background-color: #d4edda;
+    border: 2px solid #c3e6cb;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+#container_master{
+    display: flex;
+    justify-content:center;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+/* 
+ * Form Input Link
+*/
+#form_input_tes{
+    display: flex;
+    flex-direction: column;
+}
+#form_input_tes .inputs{
+    outline: none;
+    margin-bottom: 10px;
+    padding: 6px;
+    font-size: 18px;
+    border: 2px solid yellow;
+    background-color: black;
+    color: yellow;
+}
+#form_input_tes button{
+    margin-top: 10px;
+    display: block;
+    background-color: yellow;
+    color: black;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    padding: 5px;
+    cursor: pointer;
+}
+#form_input_tes button:hover{
+    background-color: rgb(221, 221, 0);
+    color: black;
+}
+#form_input_tes button div{
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    width: 100%;
+    padding: 10px 20px;
+    border: 4px solid black;
+    box-sizing: border-box;
+}
+
+/* 
+ * Link Options
+*/
+#container_result{
+    min-height: 200px;
+    flex-grow: 1;
+    margin-left: 20px;
+    padding: 10px;
+    background-color: yellow;
+    color: black;
+}
+
+.separator{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.separator h1{
+    z-index: 10;
+    padding: 0 10px;
+    background-color: yellow;
+}
+.separator .line{
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 2px solid black;
+}
+#result{
+    margin-top: 30px;
+}
+
+table{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+thead th{
+    background: black;
+    color: yellow;
+    padding: 6px 10px;
+}
+tbody td{
+    color: black;
+    padding: 6px 10px;
+    border: 2px solid black;
+}
+
+@media (max-width:720px) {
+    #container_master{
+        flex-direction: column;
+    }
+    #form_input_tes, #container_result{
+        padding: 0 20px;
+    }
+    #form_input_tes input{
+        width: 95%;
+    }
+    #container_result{
+        margin-left: 0;
+        margin-top: 40px;
+    }
+}
