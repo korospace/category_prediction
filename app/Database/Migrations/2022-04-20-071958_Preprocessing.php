@@ -66,6 +66,10 @@ class Preprocessing extends Migration
                 'null'       => true,
                 'default'    => null
             ],
+            'classify' => [
+                'type'       => 'boolean',
+                'default'    => false
+            ],
         ]);
 
         $this->forge->addKey('no');

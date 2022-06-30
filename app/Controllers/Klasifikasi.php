@@ -108,15 +108,19 @@ class Klasifikasi extends ResourceController
     public function countDataProb()
     {
         try {
+            $this->db->transBegin();
+
             // get data from table preprocessing
             $preprocessing = $this->db->table("preprocessing")
                 ->where("id_kategori !=",null)
+                ->where("classify",0)
                 ->get()->getResultArray();
 
             $kategori = $this->db->table("kategori")->get()->getResultArray();
     
             foreach ($preprocessing as $p) {
 
+                $entry_id   = $p["entry_id"];
                 $dataBersih = $p["data_bersih"];
                 $dataBersihToArray = explode(" ",$dataBersih);
     
@@ -160,7 +164,15 @@ class Klasifikasi extends ResourceController
                         }
                     }
                 }
+
+                $this->db->table("preprocessing")
+                    ->where("entry_id",$entry_id)
+                    ->update(["classify" => 1]);
             }
+
+            if ($this->db->transStatus()) {
+                $this->db->transCommit();
+            } 
 
             $arrRes  = [
                 "code"    => 200,
@@ -171,6 +183,8 @@ class Klasifikasi extends ResourceController
             return $this->respond($arrRes,$arrRes['code']);
         } 
         catch (\Throwable $th) {
+            $this->db->transRollback();
+
             $respond = [
                 'code'    => 500,
                 'error'   => true,
